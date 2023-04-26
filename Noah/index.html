@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            fetch("http://localhost:8080/allbooks")
+                .then(q => q.json())
+                .then(d => toonTabel(d))
+                console.log("Hoi")
+
+                
+        }
+        function toonTabel(deData){
+            console.log(deData)
+            document.getElementById("onze-lijst").innerHTML = ""
+            for(var x = 0; x < deData.length; x++){
+                document.getElementById("onze-lijst").innerHTML += `<div>Ons boek: ${deData[x].title}</div>`
+            }
+        }
+        function maakBoekAan(){
+            var titel = document.getElementById("mijnboek-titel").value 
+            fetch("http://localhost:8080/createbook/" + titel)
+                .then(q => window.location = window.location)
+
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="mijnboek-titel">
+    <button onclick="maakBoekAan()">Maak boek</button>
+    <h1>Hoi</h1>
+    <div id="onze-lijst"></div>
+</body>
+</html>
