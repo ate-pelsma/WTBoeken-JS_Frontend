@@ -5,34 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script type="text/javascript" src="index.js"></script>  
     <script>
         window.onload = function(){
-            fetch("http://localhost:8080/allbooks")
+            fetch("http://localhost:8080/book/all")
                 .then(q => q.json())
                 .then(d => toonTabel(d))
-                console.log("Hoi")
-
-                
-        }
-        function toonTabel(deData){
-            console.log(deData)
-            document.getElementById("onze-lijst").innerHTML = ""
-            for(var x = 0; x < deData.length; x++){
-                document.getElementById("onze-lijst").innerHTML += `<div>Ons boek: ${deData[x].title}</div>`
-            }
-        }
-        function maakBoekAan(){
-            var titel = document.getElementById("mijnboek-titel").value 
-            fetch("http://localhost:8080/createbook/" + titel)
-                .then(q => window.location = window.location)
-
+                console.log("Hoi")       
         }
     </script>
 </head>
 <body>
-    <input type="text" id="mijnboek-titel">
-    <button onclick="maakBoekAan()">Maak boek</button>
+    <input type="text" id="book-title">
+    <input type="text" id="isbn">
+    <button onclick="bookSave()">Voeg boek toe</button>
     <h1>Hoi</h1>
-    <div id="onze-lijst"></div>
+    <div id="book-list"></div>
+    <a href="./create-user.html">
+        <button>Gebruiker aanmaken</button>
+    </a>
 </body>
 </html>
