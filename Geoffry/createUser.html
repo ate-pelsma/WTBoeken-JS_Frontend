@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const http = require('http');
+
+        const server = http.createServer((req, res) => {
+        // Add the Access-Control-Allow-Origin header
+        res.setHeader('Access-Control-Allow-Origin', '*');
+
+        // Handle the request
+        if (req.url === '/user/save/' && req.method === 'POST') {
+            // Handle the user save request
+        } else {
+            // Handle other requests
+        }
+        });
+
+        server.listen(8080, () => {
+        console.log('Server running at http://localhost:8080/');
+        });
+
+        window.onload = function(){
+            fetch("http://localhost:8080/user/all")
+                .then(q => q.json())
+                .then(d => toonTabel(d))            
+        }
+        function toonTabel(deData){
+            console.log(deData)
+            document.getElementById("onze-lijst").innerHTML = ""
+            for(var x = 0; x < deData.length; x++){
+                document.getElementById("onze-lijst").innerHTML += `<div>Nieuwe gebruiker: ${deData[x].name}</div>`
+            }
+        }
+        function makeAccount(){
+            var newUser = {};
+                newUser.email = document.getElementById("email").value,
+                newUser.name = document.getElementById("name").value,
+                newUser.password = document.getElementById("password").value 
+                var deJSON = JSON.stringify(newUser);
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if(this.readyState == 4)
+                {
+                    console.log("toevoegen gelukt");
+                }
+            }
+            xhr.open('POST', 'http://localhost:8080/user/save', true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(deJSON);
+        }
+
+    </script>
+</head>
+<body>
+    <input type="text" id="email">
+    <input type="text" id="name">
+    <input type="text" id="password">
+    <button onclick="makeAccount()">Make account</button>
+    <h1>Hoi</h1>
+    <div id="onze-lijst"></div>
+</body>
+</html>

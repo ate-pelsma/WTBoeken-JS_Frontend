@@ -7,7 +7,7 @@
     <title>Document</title>
     <script>
         window.onload = function(){
-            fetch("http://localhost:8080/allbooks")
+            fetch("http://localhost:8080/book/all")
                 .then(q => q.json())
                 .then(d => toonTabel(d))
                 console.log("Hoi")
@@ -23,7 +23,7 @@
         }
         function maakBoekAan(){
             var titel = document.getElementById("mijnboek-titel").value 
-            fetch("http://localhost:8080/createbook/" + titel)
+            fetch("http://localhost:8080/book/save/" + titel)
                 .then(q => window.location = window.location)
 
         }
