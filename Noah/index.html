@@ -10,8 +10,7 @@
         window.onload = function(){
             fetch("http://localhost:8080/book/all")
                 .then(q => q.json())
-                .then(d => toonTabel(d))
-                console.log("Hoi")       
+                .then(d => bookTable(d))     
         }
     </script>
 </head>
@@ -20,9 +19,10 @@
     <input type="text" id="isbn">
     <button onclick="bookSave()">Voeg boek toe</button>
     <h1>Hoi</h1>
-    <div id="book-list"></div>
+    <div id="book-table"></div>
     <a href="./create-user.html">
         <button>Gebruiker aanmaken</button>
     </a>
+    
 </body>
 </html>

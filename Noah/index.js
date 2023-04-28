@@ -1,8 +1,8 @@
-function toonTabel(deData){
-    console.log(deData)
-    document.getElementById("book-list").innerHTML = ""
-    for(var x = 0; x < deData.length; x++){
-        document.getElementById("book-list").innerHTML += `<div>Ons boek: ${deData[x].title}</div>`
+function bookTable(d){
+    // document.getElementById("book-table").innerHTML = "<table>"
+
+    for (const line of d) {
+        document.getElementById("book-table").innerHTML += `<div>${line.title}</div>`
     }
 }
 

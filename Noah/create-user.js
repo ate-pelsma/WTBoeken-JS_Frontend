@@ -1,9 +1,9 @@
 function userSave() {
 
     var user = {};
-    user.name = document.getElementById("username");
-    user.password = document.getElementById("password");
-    user.email = document.getElementById("email");
+    user.name = document.getElementById("username-input").value;
+    user.password = document.getElementById("password-input").value;
+    user.email = document.getElementById("email-input").value;
     var userJson = JSON.stringify(user);
     var xhr = new XMLHttpRequest();
 
@@ -13,7 +13,7 @@ function userSave() {
         }
     }
 
-    xhr.open("POST", "http://localhost:8080/book/save", true);
+    xhr.open("POST", "http://localhost:8080/user/save", true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(userJson);
 
