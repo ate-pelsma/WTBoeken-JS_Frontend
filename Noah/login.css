@@ -1,4 +1,10 @@
+html {
+    height: 100%;
+}
+
 body {
+    height: 100%;
+    margin: 0;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -22,7 +28,50 @@ body {
     align-items: center;
 }
 
+#login-error-message {
+    width: 23%;
+    text-align: center;
+    margin: 0;
+    padding: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgb(125, 0, 0);
+    border: 1px solid rgb(109, 0, 0);
+    background-color: rgb(255, 87, 87);
+    opacity: 0;
+}
+
+#error-message-second-line {
+    display: block;
+}
+
 #login {
     align-self: flex-start;
     display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.login-form-field::placeholder {
+    color: rgb(69, 69, 69);
+}
+
+.login-form-field {
+    border: none;
+    border-bottom: 1px solid rgb(69, 69, 69);
+    margin-bottom: 10px;
+    border-radius: 3px;
+    outline: none;
+    padding: 0px 0px 5px 5px;
+}
+
+#login-form-submit {
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(69,69,69);
+    cursor: pointer;
+    outline: none;
 }
