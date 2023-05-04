@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="acc-list.css">
+    <script>
+        window.onload = function(){
+            fetch("http://localhost:8080/user/all")
+                .then(q => q.json())
+                .then(d => bookTable(d))     
+        }
+    </script>
+</head>
+<body>
+    <div class="header">header</div>
+    <div id="sidebar">test</div>
+
+    <main id="main-holder">
+        <div id="user-table"></div>
+    </main>
+    
+</body>
+</html>

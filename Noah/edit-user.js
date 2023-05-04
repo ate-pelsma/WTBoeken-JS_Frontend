@@ -1,11 +1,10 @@
 const form = document.getElementById("register")
 form.addEventListener("submit", function (e) {
     e.preventDefault()
-    userSave()
+    userEdit()
 })
 
-function userSave() {
-
+function userEdit() {
     var user = {};
     user.name = document.getElementById("username-input").value;
     user.password = document.getElementById("password-input").value;
@@ -17,12 +16,17 @@ function userSave() {
 
     xhr.onreadystatechange = function() {
         if (this.readyState==4) {
-            console.log("user added");
+            console.log("user modified");
         }
     }
 
-    xhr.open("POST", "http://localhost:8080/user/save", true);
+    const id = document.getElementById("id-input").value;
+    xhr.open("PUT", `http://localhost:8080/user/admin/${id}`, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.send(userJson);
+}
 
+function userInactive() {
+    const id = document.getElementById("id-input").value;
+    fetch(`http://localhost:8080/user/inactive/${id}`);
 }

@@ -5,19 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gebruiker aanmaken</title>
-    <script defer type="text/javascript" src="create-user.js"></script>  
+    <script defer type="text/javascript" src="edit-user.js"></script>  
     <link rel="stylesheet" href="create-user.css">
 </head>
 <body>
     <main id="main-holder">
-        <h1>Account aanmaken</h1>
+        <h1>Account aanpassen</h1>
         <form id="register">
+            <input type="text" name="id" id="id-input" class="register-form-field" placeholder="id">
             <input type="text" name="username" id="username-input" class="register-form-field" placeholder="Gebruikersnaam">
             <input type="password" name="password" id="password-input" class="register-form-field" placeholder="Wachtwoord">
             <input type="email" name="email" id="email-input" class="register-form-field" placeholder="Email">
-            <input type="checkbox" name="admin" id="admin-input" class="register-form-field">
-            <input type="submit" value="Aanmaken" id="register-form-submit">
+            <div>Admin?<input type="checkbox" name="admin" id="admin-input" class="register-form-field"></div>
+            <input type="submit" value="Aanpassen" id="register-form-submit">
         </form>
+        <button onclick="userInactive()">Inactief maken</button>
     </main>
 </body>
 </html>
